@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { keys, defaultChecked } from "./data/keys";
-import useKeypress from "./hooks/useKeypress";
+import useToggledState from "./hooks/useToggledState";
+
+import Toggles from "./components/Toggles";
+import List from "./components/List";
 
 function App() {
-  const [toggled, setToggled] = useState(
-    keys.reduce(
-      (list, val) => ({ ...list, [val]: defaultChecked.includes(val) }),
-      {},
-    ),
-  );
+  const [toggled, setToggled] = useToggledState();
 
   const handleChange = (e) => {
     e.persist();
@@ -19,39 +16,16 @@ function App() {
     }));
   };
 
-  const eventInfo = useKeypress();
-
   return (
     <div className="App">
       {/* Title */}
       <h1>Press on your keyboard</h1>
 
       {/* Toggles */}
-      {keys.map((key) => (
-        <label htmlFor={key} key={`toggle-${key}`} onChange={handleChange}>
-          <input
-            type="checkbox"
-            name={key}
-            id={key}
-            value={key}
-            defaultChecked={toggled[key]}
-          />
-          {key}
-        </label>
-      ))}
+      <Toggles onToggle={handleChange} />
 
       {/* Output */}
-      {eventInfo && (
-        <ul>
-          {Object.entries(toggled).map(([key, bool]) =>
-            bool ? (
-              <li key={`output-${key}`}>
-                {key}: {`${eventInfo[key]}`}
-              </li>
-            ) : null,
-          )}
-        </ul>
-      )}
+      <List items={toggled} />
     </div>
   );
 }
