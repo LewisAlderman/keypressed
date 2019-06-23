@@ -1,11 +1,13 @@
 import React from "react";
 
 import useToggledState from "./hooks/useToggledState";
+import useKeypress from "./hooks/useKeypress";
 
 import Toggles from "./components/Toggles";
 import List from "./components/List";
 
 function App() {
+  const eventInfo = useKeypress();
   const [toggled, setToggled] = useToggledState();
 
   const handleChange = (e) => {
@@ -18,14 +20,22 @@ function App() {
 
   return (
     <div className="App">
-      {/* Title */}
-      <h1>Press on your keyboard</h1>
+      <div className={`col col-left`}>
+        <div className="wrapper">
+          {/* Title */}
+          <h1>Press on your keyboard</h1>
 
-      {/* Toggles */}
-      <Toggles onToggle={handleChange} />
+          {/* Toggles */}
+          {eventInfo && <Toggles onToggle={handleChange} />}
+        </div>
+      </div>
 
-      {/* Output */}
-      <List items={toggled} />
+      {eventInfo && (
+        <div className={`col col-right`}>
+          {/* Output */}
+          <List items={toggled} event={eventInfo} />
+        </div>
+      )}
     </div>
   );
 }

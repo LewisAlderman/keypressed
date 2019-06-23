@@ -1,22 +1,19 @@
 import React from "react";
 
-import useKeypress from "../../hooks/useKeypress";
-
-const List = ({ items }) => {
-  const eventInfo = useKeypress();
+const List = ({ items, event }) => {
   return (
-    (eventInfo && (
-      <ul>
-        {Object.entries(items).map(([key, bool]) =>
-          bool ? (
-            <li key={`output-${key}`}>
-              {key}: {`${eventInfo[key]}`}
-            </li>
-          ) : null,
-        )}
-      </ul>
-    )) ||
-    null
+    <ul>
+      {Object.entries(items).map(([key, bool]) =>
+        bool ? (
+          <li key={`output-${key}`}>
+            <code>
+              <span className="key">{key}</span>
+              <span className="value">{`${event[key]}`}</span>
+            </code>
+          </li>
+        ) : null,
+      )}
+    </ul>
   );
 };
 
