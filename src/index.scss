@@ -33,10 +33,12 @@ body {
   padding: 1rem;
   border-radius: 1rem;
   height: 500px;
+  position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 
   .col {
     flex: 1;
@@ -89,10 +91,56 @@ body {
             }
             .value {
               font-weight: 700;
-              width: 7ch;
+              width: 9ch;
             }
           }
         }
+      }
+    }
+  }
+
+  .shapes {
+    & > svg {
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1, 1);
+      transform: translateZ(0);
+      position: absolute;
+      z-index: -1;
+      transition: all 2s cubic-bezier(1, 0.25, 0.16, 0.97);
+      will-change: transform;
+      left: 50%;
+      top: 50%;
+      opacity: 0.75;
+
+      &.polygon {
+        transform: translate(-170%, -10%) rotate(-25deg);
+
+        // &.transitioned {
+        //   transform: translate(-70%, -80%) rotate(90deg);
+        // }
+      }
+
+      &.ellipse {
+        transform: translate(30%, -60%) scale(0.5);
+        width: 400px;
+        height: 400px;
+        circle {
+          cx: 200px;
+          cy: 200px;
+          r: 200px;
+        }
+
+        // &.transitioned {
+        //   transform: translate(-120%, 30%) scale(1);
+        // }
+      }
+
+      &.rectangle {
+        transform: translate(-90%, -130%) rotate(25deg);
+
+        // &.transitioned {
+        //   transform: translate(40%, -50%) rotate(234deg) scale(2);
+        // }
       }
     }
   }

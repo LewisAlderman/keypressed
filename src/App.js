@@ -5,6 +5,9 @@ import useKeypress from "./hooks/useKeypress";
 
 import Toggles from "./components/Toggles";
 import List from "./components/List";
+import Polygon from "./svg/Polygon.jsx";
+import Ellipse from "./svg/Ellipse.jsx";
+import Rectangle from "./svg/Rectangle.jsx";
 
 function App() {
   const eventInfo = useKeypress();
@@ -36,6 +39,21 @@ function App() {
           <List items={toggled} event={eventInfo} />
         </div>
       )}
+
+      <div className="shapes">
+        <Polygon
+          animated={Boolean(eventInfo)}
+          className={`polygon ${eventInfo && "transitioned"}`}
+        />
+        <Ellipse
+          animated={Boolean(eventInfo)}
+          className={`ellipse ${eventInfo && "transitioned"}`}
+        />
+        <Rectangle
+          animated={Boolean(eventInfo)}
+          className={`rectangle ${eventInfo && "transitioned"}`}
+        />
+      </div>
     </div>
   );
 }
