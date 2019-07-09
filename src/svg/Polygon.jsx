@@ -1,10 +1,10 @@
 import React from "react";
 import { useSpring, animated as a } from "react-spring";
 
-const Polygon = ({ animated, ...props }) => {
+const Polygon = ({ entered, ...props }) => {
   const springProps = useSpring({
     to: {
-      transform: animated
+      transform: entered
         ? `translate(-110%, -80%) rotate(-150deg) scale(0.8)`
         : `translate(-170%, -10%) rotate(-25deg) scale(1)`,
     },

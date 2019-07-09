@@ -1,10 +1,10 @@
 import React from "react";
 import { useSpring, animated as a } from "react-spring";
 
-const Ellipse = ({ animated, ...props }) => {
+const Ellipse = ({ entered, ...props }) => {
   const springProps = useSpring({
     to: {
-      transform: animated
+      transform: entered
         ? `translate(-120%, 30%) scale(1)`
         : `translate(30%, -60%) scale(0.5)`,
     },

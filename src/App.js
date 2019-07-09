@@ -1,4 +1,5 @@
 import React from "react";
+import { useSpring, a } from "react-spring";
 
 import useToggledState from "./hooks/useToggledState";
 import useKeypress from "./hooks/useKeypress";
@@ -21,8 +22,21 @@ function App() {
     }));
   };
 
+  const floatProps = useSpring({
+    to: eventInfo
+      ? {
+          boxShadow: `0 50px 40px -40px #e3f3ff`,
+          transform: `translateY(-10px)`,
+        }
+      : {
+          boxShadow: `0 40px 25px -30px #e3f3ff`,
+          transform: `translateY(0px)`,
+        },
+    config: { tension: 370, friction: 10 },
+  });
+
   return (
-    <div className="App">
+    <a.div style={floatProps} className={`App ${!!eventInfo && `floating`}`}>
       <div className={`col col-left`}>
         <div className="wrapper">
           {/* Title */}
@@ -41,20 +55,11 @@ function App() {
       )}
 
       <div className="shapes">
-        <Polygon
-          animated={Boolean(eventInfo)}
-          className={`polygon ${eventInfo && "transitioned"}`}
-        />
-        <Ellipse
-          animated={Boolean(eventInfo)}
-          className={`ellipse ${eventInfo && "transitioned"}`}
-        />
-        <Rectangle
-          animated={Boolean(eventInfo)}
-          className={`rectangle ${eventInfo && "transitioned"}`}
-        />
+        <Polygon entered={!!eventInfo} className={`polygon`} />
+        <Ellipse entered={!!eventInfo} className={`ellipse`} />
+        <Rectangle entered={!!eventInfo} className={`rectangle`} />
       </div>
-    </div>
+    </a.div>
   );
 }
 

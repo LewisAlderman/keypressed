@@ -1,10 +1,10 @@
 import React from "react";
 import { useSpring, animated as a } from "react-spring";
 
-const Rectangle = ({ animated, ...props }) => {
+const Rectangle = ({ entered, ...props }) => {
   const springProps = useSpring({
     to: {
-      transform: animated
+      transform: entered
         ? `translate(40%, -50%) rotate(234deg) scale(2)`
         : `translate(-90%, -130%) rotate(25deg) scale(1)`,
     },
