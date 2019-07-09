@@ -9,4 +9,4 @@ export const keys = [
   "which",
 ];
 
-export const defaultChecked = ["charCode", "code", "key", "shiftKey"];
+export const defaultChecked = ["which", "code", "key", "shiftKey"];

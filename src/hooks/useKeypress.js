@@ -7,7 +7,7 @@ function useKeypress() {
     set(e);
   };
 
-  const eventType = "keypress";
+  const eventType = "keydown";
   const callback = handleKeypress;
 
   useEffect(() => {

@@ -25,14 +25,14 @@ function App() {
   const floatProps = useSpring({
     to: eventInfo
       ? {
-          boxShadow: `0 50px 40px -40px #e3f3ff`,
+          boxShadow: `0 80px 40px -60px #e3f3ff`,
           transform: `translateY(-10px)`,
         }
       : {
-          boxShadow: `0 40px 25px -30px #e3f3ff`,
+          boxShadow: `0 40px 20px -30px #e3f3ff`,
           transform: `translateY(0px)`,
         },
-    config: { tension: 370, friction: 10 },
+    config: { tension: 700, friction: 20, mass: 0.6 },
   });
 
   return (
@@ -54,10 +54,19 @@ function App() {
         </div>
       )}
 
-      <div className="shapes">
-        <Polygon entered={!!eventInfo} className={`polygon`} />
-        <Ellipse entered={!!eventInfo} className={`ellipse`} />
-        <Rectangle entered={!!eventInfo} className={`rectangle`} />
+      <div className={`shapes`}>
+        <Polygon
+          entered={!!eventInfo}
+          className={`polygon ${!!eventInfo && `entered`}`}
+        />
+        <Ellipse
+          entered={!!eventInfo}
+          className={`ellipse ${!!eventInfo && `entered`}`}
+        />
+        <Rectangle
+          entered={!!eventInfo}
+          className={`rectangle ${!!eventInfo && `entered`}`}
+        />
       </div>
     </a.div>
   );

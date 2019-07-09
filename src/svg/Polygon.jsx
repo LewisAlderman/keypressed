@@ -2,14 +2,21 @@ import React from "react";
 import { useSpring, animated as a } from "react-spring";
 
 const Polygon = ({ entered, ...props }) => {
-  const springProps = useSpring({
-    to: {
-      transform: entered
-        ? `translate(-110%, -80%) rotate(-150deg) scale(0.8)`
-        : `translate(-170%, -10%) rotate(-25deg) scale(1)`,
-    },
-    config: { mass: 1, tension: 150, friction: 20 },
-  });
+  const plusOrMinus = n => {
+    const rand = Math.floor(Math.random() * 15);
+    return Math.random() > 0.5 ? n + rand : n - rand;
+  };
+
+  const [springProps, set] = useSpring(() => ({
+    to: { transform: `translate(-170%, -10%) rotate(-25deg) scale(1)` },
+    config: { tension: 655, friction: 30, mass: 0.5 },
+  }));
+
+  if (entered) {
+    set(() => ({
+      to: { transform: `translate(${plusOrMinus(-110)}%, ${plusOrMinus(-80)}%) rotate(${plusOrMinus(-150)}deg) scale(0.8)` },
+    }))
+  }
 
   return (
     <a.svg
