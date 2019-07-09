@@ -135,3 +135,23 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 940px) {
+  .App {
+    flex-direction: column;
+    width: calc(100vw - 2rem);
+    height: calc(100vh - 2rem);
+    justify-content: center;
+
+    .col {
+      flex: 0;
+      &-left {
+        height: fit-content;
+        margin-bottom: 2rem;
+        h1 {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
