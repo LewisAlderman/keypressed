@@ -26,13 +26,13 @@ function App() {
     to: eventInfo
       ? {
           boxShadow: `0 80px 40px -60px #e3f3ff`,
-          transform: `translateY(-10px)`,
+          transform: `translateY(-0.5min)`,
         }
       : {
           boxShadow: `0 40px 20px -30px #e3f3ff`,
-          transform: `translateY(0px)`,
+          transform: `translateY(0vmin)`,
         },
-    config: { tension: 700, friction: 20, mass: 0.6 },
+    config: { tension: 650, friction: 35, mass: 1 },
   });
 
   return (
