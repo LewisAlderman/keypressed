@@ -9,9 +9,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   .bg {
     background: lighten($bg, 8);
+    display: none;
     z-index: 0 !important;
     border-radius: 1rem;
     position: absolute;
@@ -21,12 +23,70 @@
     bottom: 0;
   }
 
-  h1 {
-    color: lighten($bg, 85);
+  .text {
+    margin-bottom: 2rem;
+
+    h1 {
+      color: lighten($bg, 85);
+      margin-bottom: 1rem;
+    }
+
+    h6 {
+      color: royalblue;
+      font-size: 15px;
+      position: relative;
+      font-weight: 400;
+      height: 1.5em;
+
+      svg {
+        width: 1em;
+        height: 1em;
+        vertical-align: bottom;
+        margin-right: 0.2em;
+        fill: rgba(royalblue, 0.5);
+      }
+
+      a {
+        &:hover {
+          color: slateblue;
+        }
+        &:active {
+          color: rgba(whitesmoke, 0.5);
+        }
+      }
+
+      & > a,
+      & > span {
+        display: block;
+        width: 100%;
+      }
+
+      & > span strong {
+        font-family: $code;
+        display: inline-block;
+        padding: 0 2px;
+        border-radius: 3px;
+        background: darken(royalblue, 40);
+      }
+    }
+
+    & > * {
+      z-index: 1;
+    }
   }
 
-  & > * {
-    z-index: 1;
+  .key {
+    position: absolute;
+    bottom: -2.5rem;
+    width: 100%;
+    & > * {
+      display: inline-block;
+      font-family: $code;
+      border-radius: 3px;
+      padding: 2px 4px;
+      color: $bg;
+      background: royalblue;
+    }
   }
 
   @media screen and (min-width: 500px) {
@@ -35,5 +95,8 @@
   @media screen and (min-width: 960px) {
     max-width: 900px;
     flex-direction: row;
+    .bg {
+      display: block;
+    }
   }
 }
