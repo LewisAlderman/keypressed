@@ -1,4 +1,4 @@
-export const DEFAULT_CHECKED = [];
+export const DEFAULT_CHECKED = ['code', 'key', 'which'];
 
 export const EVENT_KEYS = [
   'altKey',

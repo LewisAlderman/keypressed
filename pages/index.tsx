@@ -1,12 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import { useKeyHandler } from '../src/hooks/useKeyHandler';
+import Body from '../src/components/Body';
 
 export default function Home() {
-  const state = useKeyHandler();
-
   return (
-    <div>
+    <>
       <Head>
         <title>WhichKey</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -41,11 +39,7 @@ export default function Home() {
         <meta name="theme-color" content="#317EFB" />
       </Head>
 
-      <h1>Press a key</h1>
-
-      <div>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
-      </div>
-    </div>
+      <Body />
+    </>
   );
 }

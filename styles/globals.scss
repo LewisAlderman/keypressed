@@ -1,16 +1,147 @@
 html,
 body {
+  background: #f0f9ff;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+blockquote,
+dl,
+dd,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+}
+
+blockquote,
+dl,
+dd,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+::selection {
+  color: #000;
+  background: #fbd404;
+}
+
+p {
+  max-width: 75ch;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.ellipsis {
+  /* insert max-width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+label,
+button,
+input,
+select {
+  cursor: pointer;
+}
+
+svg {
+  fill: currentColor;
+}
+
+img {
+  font-style: italic;
+  vertical-align: middle;
+}
+
+img:not([alt]),
+img[alt=''] {
+  outline: 5px solid red;
+}
+
+@media print {
+  a {
+    text-decoration: underline;
+  }
+  [href]:not([href^='#']):after {
+    content: ' (' attr(href) ') ';
+  }
+}
+
+abbr[title],
+acronym[title],
+dfn {
+  cursor: help;
+}
+
+textarea {
+  resize: vertical;
+}
+
+[disabled] {
+  cursor: default;
+}
+
+[aria-disabled='true'] {
+  cursor: default;
+  pointer-events: none;
+}
+
+iframe {
+  border: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
