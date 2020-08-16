@@ -1,3 +1,5 @@
+export const DEFAULT_CHECKED = [];
+
 export const EVENT_KEYS = [
   'altKey',
   'charCode',
