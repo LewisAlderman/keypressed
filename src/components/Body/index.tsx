@@ -1,28 +1,24 @@
 import React from 'react';
+import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
+
+import { useKeyHandler } from '../../hooks/useKeyHandler';
 
 import styles from './styles.module.scss';
-import { useKeyHandler } from '../../hooks/useKeyHandler';
-import { IKeyEventProperties } from '../../settings';
-
-interface EventInfoProps {
-  state: IKeyEventProperties;
-}
-
-const EventInfo = ({ state }: EventInfoProps) => {
-  return (
-    <div>
-      <pre>{JSON.stringify(state, null, 2)}</pre>
-    </div>
-  );
-};
+import EventInfo from '../EventInfo';
 
 const Body = (): JSX.Element => {
-  const state = useKeyHandler();
+  const [state, set] = useKeyHandler();
 
   return (
     <div className={styles.Body}>
-      <h1>Press on your keyboard</h1>
-      <EventInfo state={state} />
+      <AnimateSharedLayout>
+        <motion.h1 layout onClick={() => set(null)}>
+          Press on your keyboard
+        </motion.h1>
+        <AnimatePresence>
+          {state && <EventInfo state={state} />}
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </div>
   );
 };

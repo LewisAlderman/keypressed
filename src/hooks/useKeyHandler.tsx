@@ -17,5 +17,5 @@ export function useKeyHandler() {
     return () => document.removeEventListener('keydown', handleKey);
   }, []);
 
-  return state;
+  return [state, set];
 }
