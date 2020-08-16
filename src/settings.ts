@@ -5,12 +5,10 @@ export const EVENT_KEYS = [
   'charCode',
   'code',
   'ctrlKey',
-  'detail',
   'key',
   'keyCode',
   'location',
   'metaKey',
-  'returnValue',
   'shiftKey',
   'which',
 ];

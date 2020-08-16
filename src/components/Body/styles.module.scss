@@ -1,13 +1,33 @@
+@import '../../../styles/variables';
+
 .Body {
   max-width: 700px;
-  background: palegoldenrod;
   height: 100vh;
   margin: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #1e313f;
+
+  .bg {
+    background: lighten($bg, 8);
+    z-index: 0 !important;
+    border-radius: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  h1 {
+    color: lighten($bg, 85);
+  }
+
+  & > * {
+    z-index: 1;
+  }
 
   @media screen and (min-width: 500px) {
     max-height: 500px;

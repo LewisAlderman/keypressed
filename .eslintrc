@@ -1,5 +1,6 @@
 {
   "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "ignorePatterns": "*.md",
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",

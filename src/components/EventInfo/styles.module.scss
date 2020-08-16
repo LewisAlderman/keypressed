@@ -1,4 +1,52 @@
+@import '../../../styles/variables';
+
 .EventInfo {
-  background: orange;
+  background: #f49b97;
   margin: 1rem;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 5px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    font-family: 'SF Mono', Menlo, Monaco, 'Roboto Mono', 'Fira Code',
+      'Fira Mono', 'Andale Mono', consolas, monospace;
+
+    tr {
+      &:nth-of-type(even) {
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(grey, 0.33),
+          transparent
+        );
+      }
+
+      th {
+        color: rgba($bg, 0.6);
+        font-weight: 500;
+        text-align: left;
+        min-width: 10ch;
+        padding-right: 10px;
+      }
+      td {
+        color: $bg;
+        font-weight: 600;
+        text-align: left;
+        min-width: 13.5ch;
+        animation: updateValue 0.5s ease-in-out;
+      }
+    }
+  }
+
+  @keyframes updateValue {
+    from {
+      color: tomato;
+    }
+    to {
+      background: initial;
+    }
+  }
 }

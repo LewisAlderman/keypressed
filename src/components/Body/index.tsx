@@ -11,6 +11,14 @@ const Body = (): JSX.Element => {
 
   return (
     <div className={styles.Body}>
+      <motion.div
+        /** background */ className={styles.bg}
+        animate={{
+          opacity: state ? 1 : 0,
+          scale: state ? 1 : 1.2,
+        }}
+      />
+
       <AnimateSharedLayout>
         <motion.h1 layout onClick={() => set(null)}>
           Press on your keyboard
