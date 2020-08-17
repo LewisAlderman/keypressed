@@ -16,7 +16,7 @@ const svg = (
 );
 
 const Body = (): JSX.Element => {
-  const [state, set] = useKeyHandler();
+  const [state] = useKeyHandler();
   const [isShapesVisible, setShapesVisible] = useState(false);
 
   const randomRotate = () =>

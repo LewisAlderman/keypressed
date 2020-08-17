@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { IKeyEventProperties, EVENT_KEYS } from '../settings';
 
-export function useKeyHandler() {
+export function useKeyHandler(): [IKeyEventProperties] {
   const [state, set] = useState<IKeyEventProperties>(null);
 
   const handleKey = (e: KeyboardEvent) => {
