@@ -40,10 +40,6 @@ export default function Home() {
       </Head>
 
       <Body />
-
-      <section />
-      <section />
-      <section />
     </>
   );
 }

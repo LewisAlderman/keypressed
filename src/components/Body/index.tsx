@@ -18,8 +18,35 @@ const svg = (
 const Body = (): JSX.Element => {
   const [state, set] = useKeyHandler();
 
+  const randomRotate = () =>
+    Math.floor(Math.random() * 50) - Math.floor(Math.random() * 50);
+
+  const randomTranslate = () =>
+    Math.floor(Math.random() * 30) - Math.floor(Math.random() * 30);
+
+  const randomScale = () => 1.2 - (Math.random() * 1).toFixed(1);
+
   return (
     <div className={styles.Body}>
+      <motion.section
+        key="s1"
+        animate={{
+          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+        }}
+      />
+      <motion.section
+        key="s2"
+        animate={{
+          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+        }}
+      />
+      <motion.section
+        key="s3"
+        animate={{
+          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+        }}
+      />
+
       <motion.div
         /** background */ className={styles.bg}
         initial={{
