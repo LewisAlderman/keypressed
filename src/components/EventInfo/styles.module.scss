@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
 .EventInfo {
-  background: #f49b97;
+  background: rgba(lighten($bg, 70), 0.1);
   margin: 2.5rem 0 0 0;
   border-radius: 3px;
   overflow: hidden;
@@ -28,14 +28,14 @@
       }
 
       th {
-        color: rgba($bg, 0.6);
+        color: rgba(white, 0.5);
         font-weight: 500;
         text-align: left;
         min-width: 10ch;
         padding-right: 10px;
       }
       td {
-        color: $bg;
+        color: rgba(white, 0.75);
         font-weight: 600;
         text-align: left;
         min-width: 13.5ch;
@@ -46,7 +46,7 @@
 
   @keyframes updateValue {
     from {
-      color: tomato;
+      color: rgb(0, 204, 136);
     }
     to {
       background: initial;

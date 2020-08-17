@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 
 import { useKeyHandler } from '../../hooks/useKeyHandler';
@@ -17,6 +17,7 @@ const svg = (
 
 const Body = (): JSX.Element => {
   const [state, set] = useKeyHandler();
+  const [isShapesVisible, setShapesVisible] = useState(false);
 
   const randomRotate = () =>
     Math.floor(Math.random() * 50) - Math.floor(Math.random() * 50);
@@ -24,28 +25,37 @@ const Body = (): JSX.Element => {
   const randomTranslate = () =>
     Math.floor(Math.random() * 30) - Math.floor(Math.random() * 30);
 
-  const randomScale = () => 1.2 - (Math.random() * 1).toFixed(1);
+  const randomScale = () => (1.2 - Math.random()).toFixed(1);
 
   return (
     <div className={styles.Body}>
-      <motion.section
-        key="s1"
-        animate={{
-          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
-        }}
-      />
-      <motion.section
-        key="s2"
-        animate={{
-          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
-        }}
-      />
-      <motion.section
-        key="s3"
-        animate={{
-          transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
-        }}
-      />
+      <AnimatePresence>
+        {isShapesVisible && state && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <motion.section
+              key="s1"
+              animate={{
+                opacity: state ? 1 : 0,
+                transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+              }}
+            />
+            <motion.section
+              key="s2"
+              animate={{
+                opacity: state ? 1 : 0,
+                transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+              }}
+            />
+            <motion.section
+              key="s3"
+              animate={{
+                opacity: state ? 1 : 0,
+                transform: `rotate(${randomRotate()}deg) translate(${randomTranslate()}px, ${randomTranslate()}px) scale(${randomScale()})`,
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <motion.div
         /** background */ className={styles.bg}
@@ -64,9 +74,7 @@ const Body = (): JSX.Element => {
           {/**
            * Header
            */}
-          <motion.h1 layout onClick={() => set(null)}>
-            Press on your keyboard
-          </motion.h1>
+          <motion.h1 layout>Press on your keyboard</motion.h1>
 
           {/**
            * SubHeading
@@ -76,6 +84,7 @@ const Body = (): JSX.Element => {
               {!state && (
                 <motion.span
                   key="h61"
+                  onAnimationComplete={() => setShapesVisible(true)}
                   transition={{
                     duration: 0.5,
                     delay: 2,
@@ -114,7 +123,6 @@ const Body = (): JSX.Element => {
                   transition={{
                     duration: 0.33,
                   }}
-                  onAnimationComplete={() => null}
                   target="_blank"
                   rel="noopener noreferrer">
                   {svg}
