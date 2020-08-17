@@ -10,9 +10,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 1;
+  box-shadow: 0 60px 50px -60px rgba(royalblue, 0.33);
 
   .bg {
-    background: lighten($bg, 8);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(royalblue, 0.1);
+    background-image: radial-gradient(
+      circle at 50% 25%,
+      lighten($bg, 1),
+      rgba(lighten($bg, 10), 0.25)
+    );
+    backdrop-filter: blur(30px);
+    will-change: transform;
     display: none;
     z-index: 0 !important;
     border-radius: 1rem;
@@ -58,7 +69,6 @@
       & > a,
       & > span {
         display: block;
-        width: 100%;
       }
 
       & > span strong {
@@ -95,6 +105,7 @@
   @media screen and (min-width: 960px) {
     max-width: 900px;
     flex-direction: row;
+    box-shadow: none;
     .bg {
       display: block;
     }
