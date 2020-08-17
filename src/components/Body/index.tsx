@@ -84,7 +84,6 @@ const Body = (): JSX.Element => {
               {!state && (
                 <motion.span
                   key="h61"
-                  onAnimationComplete={() => setShapesVisible(true)}
                   transition={{
                     duration: 0.5,
                     delay: 2,
@@ -146,7 +145,12 @@ const Body = (): JSX.Element => {
          * EVENT INFO
          */}
         <AnimatePresence>
-          {state && <EventInfo state={state} />}
+          {state && (
+            <EventInfo
+              state={state}
+              onAnimationEnd={() => setShapesVisible(true)}
+            />
+          )}
         </AnimatePresence>
       </AnimateSharedLayout>
     </div>

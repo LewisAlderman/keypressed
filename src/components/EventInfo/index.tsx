@@ -7,12 +7,14 @@ import styles from './styles.module.scss';
 
 interface EventInfoProps {
   state: IKeyEventProperties;
+  onAnimationEnd: () => void;
 }
 
-const EventInfo = ({ state }: EventInfoProps): JSX.Element => {
+const EventInfo = ({ state, onAnimationEnd }: EventInfoProps): JSX.Element => {
   return (
     <motion.div
       layout
+      onAnimationEnd={onAnimationEnd}
       className={styles.EventInfo}
       initial={{ opacity: 0, scale: 0.66 }}
       animate={{ opacity: 1, scale: 1, transition: { delay: 0.33 } }}>
